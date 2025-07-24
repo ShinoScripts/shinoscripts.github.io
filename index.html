@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RobloxScripts - 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: 'Nunito', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    h1 {
+      text-align: center;
+      padding: 20px;
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav {
+      display: flex;
+      justify-content: center;
+      background: #222;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    .nav a {
+      margin: 0 20px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    .nav a:hover {
+      color: #667eea;
+      background: rgba(102, 126, 234, 0.1);
+    }
+    .nav a.active {
+      color: #667eea;
+      background: rgba(102, 126, 234, 0.2);
+    }
+    .script-section {
+      display: none;
+      padding: 20px;
+    }
+    .active-section {
+      display: block;
+    }
+    .script-title {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 30px;
+      color: #667eea;
+    }
+    .script-box {
+      background: linear-gradient(145deg, #222, #2a2a2a);
+      border-radius: 15px;
+      margin: 20px auto;
+      padding: 25px;
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+      border: 1px solid #333;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .script-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(102, 126, 234, 0.2);
+    }
+    .script-box.highlighted {
+      border: 2px solid #667eea;
+      box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
+      animation: pulse 2s infinite;
+    }
+    .script-box img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    .script-number {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+    .script-url {
+      background: #333;
+      padding: 12px;
+      border-radius: 8px;
+      margin: 15px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 1.1rem;
+      color: #4CAF50;
+      border: 1px solid #555;
+    }
+    .copy-btn {
+      margin-top: 15px;
+      background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+      color: white;
+      padding: 12px 24px;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    }
+    .copy-btn:hover {
+      background: linear-gradient(135deg, #45a049 0%, #3e8e41 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+    }
+    .extra-btns {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 10px;
+    }
+    .extra-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+      display: inline-block;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+    .extra-btn:hover {
+      background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
+    .home-card {
+      background: linear-gradient(145deg, #222, #2a2a2a);
+      padding: 40px;
+      margin: 30px auto;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 500px;
+      border: 1px solid #333;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+    .home-card:hover {
+      transform: translateY(-5px);
+    }
+    .home-card img {
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      margin-bottom: 20px;
+      border: 3px solid #667eea;
+    }
+    .home-card h2 {
+      margin-bottom: 15px;
+      color: #667eea;
+    }
+    .warning-notice {
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 0.95rem;
+      border-left: 4px solid #ff4d4d;
+      box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
+      }
+      50% {
+        box-shadow: 0 12px 40px rgba(102, 126, 234, 0.8);
+      }
+      100% {
+        box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav {
+        flex-wrap: wrap;
+        padding: 10px;
+      }
+      .nav a {
+        margin: 5px 10px;
+        font-size: 1rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .script-box {
+        width: 95%;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>RobloxScripts - 2025</h1>
+
+  <div class="nav">
+    <a href="javascript:void(0)" onclick="showSection('home')" id="nav-home">Home</a>
+    <a href="javascript:void(0)" onclick="showSection('gag')" id="nav-gag">Grow a Garden</a>
+    <a href="javascript:void(0)" onclick="showSection('sab')" id="nav-sab">Steal a Brainrot</a>
+    <a href="javascript:void(0)" onclick="showSection('bf')" id="nav-bf">Blox Fruits</a>
+  </div>
+
+  <!-- Home Section -->
+  <div id="home" class="script-section">
+    <div class="script-title">My YouTube Channel</div>
+    <div class="home-card">
+      <img src="images/shino.jpg" alt="Shino Scripts">
+      <h2>Shino Scripts</h2>
+      <p>Welcome to the ultimate Roblox scripting hub! Find the latest and most powerful scripts for your favorite games.</p>
+      <a class="copy-btn" href="https://www.youtube.com/@ShinoScriptsz" target="_blank">Visit Shino Scripts</a>
+    </div>
+  </div>
+
+  <!-- Grow a Garden Section -->
+  <div id="gag" class="script-section">
+    <div class="script-title">Grow a Garden Scripts</div>
+    <div class="warning-notice">
+      <strong>⚠️ Note:</strong> Make sure you have a reliable executor installed before running these scripts!
+    </div>
+    <div id="gagScripts"></div>
+  </div>
+
+  <!-- Steal a Brainrot Section -->
+  <div id="sab" class="script-section">
+    <div class="script-title">Steal a Brainrot Scripts</div>
+    <div class="warning-notice">
+      <strong>⚠️ Note:</strong> Make sure you have a reliable executor installed before running these scripts!
+    </div>
+    <div id="sabScripts"></div>
+  </div>
+
+  <!-- Blox Fruits Section -->
+  <div id="bf" class="script-section">
+    <div class="script-title">Blox Fruits Scripts</div>
+    <div class="warning-notice">
+      <strong>⚠️ Note:</strong> Make sure you have a reliable executor installed before running these scripts!
+    </div>
+    <div id="bfScripts"></div>
+  </div>
+
+  <script>
+    // Scripts Data - Using GitHub Pages URLs
+    const scripts = {
+      gag: [
+        {
+          code: "loadstring(game:HttpGet('https://robloxscripts91.github.io/gag/script1'))()",
+          url: "robloxscripts91.github.io/gag/script1",
+          video: "https://youtu.be/GAG_VIDEO_1"
+        },
+        {
+          code: "loadstring(game:HttpGet('https://robloxscripts91.github.io/gag/script2'))()",
+          url: "robloxscripts91.github.io/gag/script2",
+          video: "https://youtu.be/GAG_VIDEO_2"
+        },
+        {
+          code: "loadstring(game:HttpGet('https://robloxscripts91.github.io/gag/script3'))()",
+          url: "robloxscripts91.github.io/gag/script3",
+          video: "https://youtu.be/GAG_VIDEO_3"
+        },
+        {
+          code: "loadstring(game:HttpGet('https://robloxscripts91.github.io/gag/script4'))()",
+          url: "robloxscripts91.github.io/gag/script4",
+          video: "https://youtu.be/GAG_VIDEO_4"
+        },
+        {
+          code: "loadstring(game:HttpGet('https://robloxscripts91.github.io/gag/script5'))()",
+          url: "robloxscripts91.github.io/gag/script5",
+          video: "https://youtu.be/GAG_VIDEO_5"
+        }
+      ],
+      sab: [
+        {
+          code: "loadstring(game:HttpGet('https://robloxscripts91.github.io/sab/script1'))()",
+          url: "robloxscripts91.github.io/sab/script1",
+          video: "https://youtu.be/SAB_VIDEO_1"
+        },
+        {
+          code: "loadstring(game:HttpGet('https://robloxscripts91.github.io/sab/script2'))()",
+          url: "robloxscripts91.github.io/sab/script2",
+          video: "https://youtu.be/SAB_VIDEO_2"
+        },
+        {
+          code: "loadstring(game:HttpGet('https://robloxscripts91.github.io/sab/script3'))()",
+          url: "robloxscripts91.github.io/sab/script3",
+          video: "https://youtu.be/SAB_VIDEO_3"
+        },
+        {
+          code: "loadstring(game:HttpGet('https://robloxscripts91.github.io/sab/script4'))()",
+          url: "robloxscripts91.github.io/sab/script4",
+          video: "https://youtu.be/SAB_VIDEO_4"
+        },
+        {
+          code: "loadstring(game:HttpGet('https://robloxscripts91.github.io/sab/script5'))()",
+          url: "robloxscripts91.github.io/sab/script5",
+          video: "https://youtu.be/SAB_VIDEO_5"
+        }
+      ],
+      bf: [
+        {
+          code: "loadstring(game:HttpGet('https://robloxscripts91.github.io/bf/script1'))()",
+          url: "robloxscripts91.github.io/bf/script1",
+          video: "https://youtu.be/BF_VIDEO_1"
+        },
+        {
+          code: "loadstring(game:HttpGet('https://robloxscripts91.github.io/bf/script2'))()",
+          url: "robloxscripts91.github.io/bf/script2",
+          video: "https://youtu.be/BF_VIDEO_2"
+        },
+        {
+          code: "loadstring(game:HttpGet('https://robloxscripts91.github.io/bf/script3'))()",
+          url: "robloxscripts91.github.io/bf/script3",
+          video: "https://youtu.be/BF_VIDEO_3"
+        },
+        {
+          code: "loadstring(game:HttpGet('https://robloxscripts91.github.io/bf/script4'))()",
+          url: "robloxscripts91.github.io/bf/script4",
+          video: "https://youtu.be/BF_VIDEO_4"
+        },
+        {
+          code: "loadstring(game:HttpGet('https://robloxscripts91.github.io/bf/script5'))()",
+          url: "robloxscripts91.github.io/bf/script5",
+          video: "https://youtu.be/BF_VIDEO_5"
+        }
+      ]
+    };
+
+    function showSection(id) {
+      const sections = document.querySelectorAll('.script-section');
+      sections.forEach(section => section.classList.remove('active-section'));
+      document.getElementById(id).classList.add('active-section');
+      
+      // Update navigation active state
+      const navLinks = document.querySelectorAll('.nav a');
+      navLinks.forEach(link => link.classList.remove('active'));
+      document.getElementById(`nav-${id}`).classList.add('active');
+      
+      // Update URL with clean paths
+      if (id !== 'home') {
+        window.history.pushState({ section: id }, '', `/${id}`);
+      } else {
+        window.history.pushState({ section: id }, '', '/');
+      }
+    }
+
+    function highlightScript(gameType, scriptNumber) {
+      // Remove any existing highlights
+      const highlightedBoxes = document.querySelectorAll('.script-box.highlighted');
+      highlightedBoxes.forEach(box => box.classList.remove('highlighted'));
+      
+      // Add highlight to the specific script
+      const scriptBox = document.getElementById(`${gameType}-script-${scriptNumber}`);
+      if (scriptBox) {
+        scriptBox.classList.add('highlighted');
+        // Scroll to the highlighted script
+        setTimeout(() => {
+          scriptBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 300);
+      }
+    }
+
+    function navigateToScript(gameType, scriptNumber) {
+      showSection(gameType);
+      setTimeout(() => {
+        highlightScript(gameType, scriptNumber);
+      }, 100);
+      
+      // Update URL with clean paths
+      window.history.pushState({ 
+        section: gameType, 
+        script: scriptNumber 
+      }, '', `/${gameType}/script${scriptNumber}`);
+    }
+
+    function parseURL() {
+      const path = window.location.pathname;
+      console.log('Current path:', path); // Debug log
+      
+      // Clean up the path - remove empty segments
+      const pathSegments = path.split('/').filter(segment => segment !== '');
+      console.log('Path segments:', pathSegments); // Debug log
+      
+      // Handle root path or just domain
+      if (pathSegments.length === 0) {
+        showSection('home');
+        return;
+      }
+      
+      // Handle different URL patterns for GitHub Pages
+      let gameType, scriptPart;
+      
+      // Pattern 1: /gameType (e.g., /gag)
+      if (pathSegments.length === 1) {
+        gameType = pathSegments[0];
+        if (scripts[gameType]) {
+          showSection(gameType);
+          return;
+        }
+        showSection('home');
+        return;
+      }
+      
+      // Pattern 2: /gameType/scriptX (e.g., /gag/script1)
+      if (pathSegments.length === 2) {
+        gameType = pathSegments[0];
+        scriptPart = pathSegments[1];
+        
+        if (scripts[gameType] && scriptPart.startsWith('script')) {
+          const scriptNumber = parseInt(scriptPart.replace('script', ''));
+          if (scriptNumber >= 1 && scriptNumber <= scripts[gameType].length) {
+            showSection(gameType);
+            setTimeout(() => {
+              highlightScript(gameType, scriptNumber);
+            }, 100);
+            return;
+          }
+        }
+        
+        // If just gameType is valid, show that section
+        if (scripts[gameType]) {
+          showSection(gameType);
+          return;
+        }
+      }
+      
+      // Pattern 3: For GitHub Pages with repo name - /repoName/gameType/scriptX
+      if (pathSegments.length >= 3) {
+        // Try different combinations
+        for (let i = 0; i < pathSegments.length - 1; i++) {
+          gameType = pathSegments[i];
+          scriptPart = pathSegments[i + 1];
+          
+          if (scripts[gameType] && scriptPart.startsWith('script')) {
+            const scriptNumber = parseInt(scriptPart.replace('script', ''));
+            if (scriptNumber >= 1 && scriptNumber <= scripts[gameType].length) {
+              showSection(gameType);
+              setTimeout(() => {
+                highlightScript(gameType, scriptNumber);
+              }, 100);
+              return;
+            }
+          }
+        }
+        
+        // Try just gameType without script
+        for (let i = 0; i < pathSegments.length; i++) {
+          if (scripts[pathSegments[i]]) {
+            showSection(pathSegments[i]);
+            return;
+          }
+        }
+      }
+      
+      // Fallback to home
+      console.log('Falling back to home'); // Debug log
+      showSection('home');
+    }
+
+    function copyScript(script, scriptName, number) {
+      navigator.clipboard.writeText(script).then(() => {
+        // Create a custom notification
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+          color: white;
+          padding: 15px 25px;
+          border-radius: 8px;
+          font-family: 'Nunito', sans-serif;
+          font-weight: bold;
+          box-shadow: 0 4px 20px rgba(76, 175, 80, 0.4);
+          z-index: 10000;
+          animation: slideIn 0.3s ease;
+        `;
+        notification.textContent = `Copied ${scriptName} Script ${number}!`;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+          notification.remove();
+        }, 3000);
+      });
+    }
+
+    function generateScriptBoxes(scriptsArray, gameType) {
+      const gameNames = {
+        'gag': 'Grow a Garden',
+        'sab': 'Steal a Brainrot',
+        'bf': 'Blox Fruits'
+      };
+      
+      return scriptsArray.map((item, i) => {
+        const num = i + 1;
+        const gameName = gameNames[gameType];
+        
+        return `
+          <div class='script-box' id='${gameType}-script-${num}'>
+            <div class="script-number">Script #${num}</div>
+            <a href="${item.video}" target="_blank">
+              <img src="images/${gameType}${num}.jpg" alt="${gameName} Script ${num}">
+            </a>
+            <div class="script-url">${item.url}</div>
+            <button class="copy-btn" onclick="copyScript(\`${item.code}\`, '${gameName}', ${num})">
+              📋 Copy Script ${num}
+            </button>
+            <div class="extra-btns">
+              <a class="extra-btn" href="https://www.youtube.com/@skibiditech007" target="_blank">
+                📱 Tutorial Download (IOS/ANDROID)
+              </a>
+              <a class="extra-btn" href="https://deltaexploits.gg/" target="_blank">
+                🚀 Android/IOS Delta Executor!
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', function(event) {
+      parseURL();
+    });
+
+    // Prevent 404 errors for virtual routes by intercepting navigation
+    window.addEventListener('DOMContentLoaded', function() {
+      // Override default link behavior for script URLs
+      document.addEventListener('click', function(e) {
+        const target = e.target.closest('a');
+        if (target && target.href) {
+          const url = new URL(target.href);
+          const path = url.pathname;
+          
+          // Check if this is one of our virtual script routes
+          const pathSegments = path.split('/').filter(segment => segment !== '');
+          if (pathSegments.length >= 2) {
+            const gameType = pathSegments[pathSegments.length - 2] || pathSegments[0];
+            const scriptPart = pathSegments[pathSegments.length - 1] || pathSegments[1];
+            
+            if (scripts[gameType] && scriptPart && scriptPart.startsWith('script')) {
+              const scriptNumber = parseInt(scriptPart.replace('script', ''));
+              if (scriptNumber >= 1 && scriptNumber <= scripts[gameType].length) {
+                e.preventDefault();
+                navigateToScript(gameType, scriptNumber);
+                return;
+              }
+            }
+            
+            // Check if it's just a game type
+            if (scripts[gameType]) {
+              e.preventDefault();
+              showSection(gameType);
+              return;
+            }
+          }
+        }
+      });
+    });
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', () => {
+      // Generate all script sections
+      document.getElementById('gagScripts').innerHTML = generateScriptBoxes(scripts.gag, 'gag');
+      document.getElementById('sabScripts').innerHTML = generateScriptBoxes(scripts.sab, 'sab');
+      document.getElementById('bfScripts').innerHTML = generateScriptBoxes(scripts.bf, 'bf');
+      
+      // Handle redirects from 404.html
+      const urlParams = new URLSearchParams(window.location.search);
+      const redirect = urlParams.get('redirect');
+      if (redirect) {
+        // Replace current URL without the redirect parameter
+        window.history.replaceState({}, '', redirect);
+      }
+      
+      // Parse URL and show appropriate section/script
+      parseURL();
+    });
+
+    // Add slide-in animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes slideIn {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Expose functions globally for testing
+    window.navigateToScript = navigateToScript;
+    window.showSection = showSection;
+  </script>
+</body>
+</html>
