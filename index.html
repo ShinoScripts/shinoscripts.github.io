@@ -235,7 +235,7 @@
     <a href="javascript:void(0)" onclick="showSection('home')" id="nav-home">Home</a>
     <a href="javascript:void(0)" onclick="showSection('gag')" id="nav-gag">Grow a Garden</a>
     <a href="javascript:void(0)" onclick="showSection('sab')" id="nav-sab">Steal a Brainrot</a>
-    <a href="javascript:void(0)" onclick="showSection('bf')" id="nav-bf">Blox Fruits</a>
+    <a href="javascript:void(0)" onclick="showSection('mm2')" id="nav-mm2">Murder Mystery 2</a>
   </div>
 
   <!-- Home Section -->
@@ -267,13 +267,13 @@
     <div id="sabScripts"></div>
   </div>
 
-  <!-- Blox Fruits Section -->
-  <div id="bf" class="script-section">
-    <div class="script-title">Blox Fruits Scripts</div>
+  <!-- Murder Mystery 2 Section -->
+  <div id="mm2" class="script-section">
+    <div class="script-title">Murder Mystery 2 Scripts</div>
     <div class="warning-notice">
       <strong>⚠️ Note:</strong> Make sure you have a reliable executor installed before running these scripts!
     </div>
-    <div id="bfScripts"></div>
+    <div id="mm2Scripts"></div>
   </div>
 
   <script>
@@ -333,31 +333,31 @@
           video: "https://youtu.be/SAB_VIDEO_5"
         }
       ],
-      bf: [
+      mm2: [
         {
-          code: "loadstring(game:HttpGet('https://shinoscripts.github.io/bf/script1'))()",
-          url: "shinoscripts.github.io/bf/script1",
-          video: "https://youtu.be/BF_VIDEO_1"
+          code: "loadstring(game:HttpGet('https://shinoscripts.github.io/mm2/script1'))()",
+          url: "shinoscripts.github.io/mm2/script1",
+          video: "https://youtu.be/MM2_VIDEO_1"
         },
         {
-          code: "loadstring(game:HttpGet('https://shinoscripts.github.io/bf/script2'))()",
-          url: "shinoscripts.github.io/bf/script2",
-          video: "https://youtu.be/BF_VIDEO_2"
+          code: "loadstring(game:HttpGet('https://shinoscripts.github.io/mm2/script2'))()",
+          url: "shinoscripts.github.io/mm2/script2",
+          video: "https://youtu.be/MM2_VIDEO_2"
         },
         {
-          code: "loadstring(game:HttpGet('https://shinoscripts.github.io/bf/script3'))()",
-          url: "shinoscripts.github.io/bf/script3",
-          video: "https://youtu.be/BF_VIDEO_3"
+          code: "loadstring(game:HttpGet('https://shinoscripts.github.io/mm2/script3'))()",
+          url: "shinoscripts.github.io/mm2/script3",
+          video: "https://youtu.be/MM2_VIDEO_3"
         },
         {
-          code: "loadstring(game:HttpGet('https://shinoscripts.github.io/bf/script4'))()",
-          url: "shinoscripts.github.io/bf/script4",
-          video: "https://youtu.be/BF_VIDEO_4"
+          code: "loadstring(game:HttpGet('https://shinoscripts.github.io/mm2/script4'))()",
+          url: "shinoscripts.github.io/mm2/script4",
+          video: "https://youtu.be/MM2_VIDEO_4"
         },
         {
-          code: "loadstring(game:HttpGet('https://shinoscripts.github.io/bf/script5'))()",
-          url: "shinoscripts.github.io/bf/script5",
-          video: "https://youtu.be/BF_VIDEO_5"
+          code: "loadstring(game:HttpGet('https://shinoscripts.github.io/mm2/script5'))()",
+          url: "shinoscripts.github.io/mm2/script5",
+          video: "https://youtu.be/MM2_VIDEO_5"
         }
       ]
     };
@@ -525,7 +525,7 @@
       const gameNames = {
         'gag': 'Grow a Garden',
         'sab': 'Steal a Brainrot',
-        'bf': 'Blox Fruits'
+        'mm2': 'Murder Mystery 2'
       };
       
       return scriptsArray.map((item, i) => {
@@ -600,7 +600,7 @@
       // Generate all script sections
       document.getElementById('gagScripts').innerHTML = generateScriptBoxes(scripts.gag, 'gag');
       document.getElementById('sabScripts').innerHTML = generateScriptBoxes(scripts.sab, 'sab');
-      document.getElementById('bfScripts').innerHTML = generateScriptBoxes(scripts.bf, 'bf');
+      document.getElementById('mm2Scripts').innerHTML = generateScriptBoxes(scripts.mm2, 'mm2');
       
       // Handle redirects from 404.html
       const urlParams = new URLSearchParams(window.location.search);
